@@ -6,6 +6,7 @@ client = commands.Bot(command_prefix=">")
 
 @client.event
 async def on_ready():
+    await client.change presence(activity=discord.Game('The game of life'))
     print("Bot is ready")
 
 @client.command()
