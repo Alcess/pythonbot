@@ -11,7 +11,7 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx, error):
-    if isinstances(error, commands.MissingRequiredArgument):
+    if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('Beep boop, does not compute. Please pass in all required arguments')
     
 @client.command()
@@ -52,8 +52,8 @@ async def clear(ctx, amount=5):
 
 @client.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
-    await member.kick(reason=reason):
-        await ctx.send('HIKUUUU!')
+    await member.kick(reason=reason)
+    await ctx.send('HIKUUUU!')
 
 @client.command()
 async def ban(ctx, member : discord.Member, *, reason=None):
