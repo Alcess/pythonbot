@@ -9,6 +9,11 @@ async def on_ready():
     await client.change_presence(activity=discord.Game('The game of life'))
     print("Bot is ready")
 
+@client.event
+async def on_command_error(ctx, error):
+    if isinstances(error, commands.MissingRequiredArgument):
+        await ctx.send('Beep boop, does not compute. Please pass in all required arguments')
+    
 @client.command()
 async def hello(ctx):
     await ctx.send("Hi There!!!")
@@ -47,7 +52,8 @@ async def clear(ctx, amount=5):
 
 @client.command()
 async def kick(ctx, member : discord.Member, *, reason=None):
-    await member.kick(reason=reason)
+    await member.kick(reason=reason):
+        await ctx.send('HIKUUUU!')
 
 @client.command()
 async def ban(ctx, member : discord.Member, *, reason=None):
